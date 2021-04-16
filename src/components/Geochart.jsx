@@ -40,7 +40,7 @@ function Geochart() {
                 defaultColor: '#ffffff',
             }}
 
-  mapsApiKey="AIzaSyCnXpBUzkgef1mNhWDeo3xvG6I_v1LgVAM"
+  mapsApiKey=""
   rootProps={{ 'data-testid': '1' }}
 />
     )
