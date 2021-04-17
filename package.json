@@ -6,7 +6,10 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "google-news-scraper": "^1.0.6",
+    "newsapi": "^2.4.1",
     "openweather-apis": "^4.4.1",
+    "puppeteer": "^8.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-charts": "^3.0.15",
@@ -35,6 +38,10 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ],
+    "proxy": [
+      "https://api.pluralsight.com:8000",
+      "https://newsapi.org/v2/top-headlines?language=en&country=us"
     ]
   }
 }

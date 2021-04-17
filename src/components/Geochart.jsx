@@ -1,14 +1,24 @@
 import { Chart } from 'react-google-charts';
 import React from 'react';
 
-//let weather = require('openweather-apis');
-//weather.setLang('en');
-//weather.setAPPID("8e31489e1ab7b3cc29e9db1e90ac61ad");
 
+const { REACT_APP_GOOGLE_MAP_API, REACT_APP_WEATHER_API, REACT_APP_NEWS_API } = process.env;
 
-const { REACT_APP_GOOGLE_MAP_API } = process.env;
+//const googleNewsScraper = require('google-news-scraper')
+
+/*async function getNews(country) {
+    const articles = await googleNewsScraper({
+        searchTerm: country,
+        prettyURLs: false,
+        timeframe: "3d",
+        puppeteerArgs: []
+    });
+    console.log(articles);
+}*/
 
 function Geochart() {
+
+    //getNews("Ghana");
     
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0VO2dBzyfwZKQHZRSQm0fX0PhI0TissY&callback=initMap"
     type="text/javascript"></script>
