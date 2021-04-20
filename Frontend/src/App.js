@@ -3,6 +3,7 @@ import './App.css';
 import Geochart from './components/Geochart';
 import SidePanel from './components/SidePanel';
 
+
 function App() {
 
   return (

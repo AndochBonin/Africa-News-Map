@@ -1,17 +1,16 @@
 import { Chart } from 'react-google-charts';
 import React from 'react';
 
-//let weather = require('openweather-apis');
-//weather.setLang('en');
-//weather.setAPPID("8e31489e1ab7b3cc29e9db1e90ac61ad");
-
-
 const { REACT_APP_GOOGLE_MAP_API } = process.env;
+
+ 
+// now(<location>) returns a Promise
+weather.now('Brisbane, Australia').then((results) => {
+    console.log(results);
+});
 
 function Geochart() {
     
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0VO2dBzyfwZKQHZRSQm0fX0PhI0TissY&callback=initMap"
-    type="text/javascript"></script>
     //weather.setCity("Algiers");
     //weather.getTemperature(function(err, temp) { console.log(temp); } );
     return (
