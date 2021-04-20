@@ -10,6 +10,8 @@ weather.now('Brisbane, Australia').then((results) => {
 });
 
 function Geochart() {
+
+    //getNews("Ghana");
     
     //weather.setCity("Algiers");
     //weather.getTemperature(function(err, temp) { console.log(temp); } );
