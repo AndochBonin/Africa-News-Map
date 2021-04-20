@@ -1,6 +1,8 @@
 import { Chart } from 'react-google-charts';
-import React from 'react';
+import React, { Component } from 'react';
 const { REACT_APP_GOOGLE_MAP_API } = process.env;
+
+
 
 const data = [
     ['Country', 'Average Temperature'],
@@ -64,7 +66,7 @@ const data = [
     ['Zimbabwe', -18]
 ];
 
-const chartEvents = [
+let chartEvents = [
     {
       eventName: "select",
       callback({ chartWrapper }) {
@@ -75,32 +77,42 @@ const chartEvents = [
         console.log(region);
       }
     }
-  ];
+];
 
-function Geochart() {
 
-    return (
-        <Chart
-            width={'70vw'}
-            height={'94.5vh'}
-            chartType="GeoChart"
-            data={data}
+export default class Geochart extends Component {
+    render() {
+        return (
+            <div>
+                <div className='chart'> 
+                    <Chart
+                        width={'70vw'}
+                        height={'94.5vh'}
+                        chartType="GeoChart"
+                        data={data}
 
-            options = {{
-                region: '002',
-                colorAxis: {colors: ['#FF0000', 'FFFF00', '#00FF00']},
-                backgroundColor: '#282c40',
-                datalessRegionColor: '#282c40',
-                defaultColor: '#ffffff',
-            }}
+                        options = {{
+                            region: '002',
+                            colorAxis: {colors: ['#FF0000', 'FFFF00', '#00FF00']},
+                            backgroundColor: '#282c40',
+                            datalessRegionColor: '#282c40',
+                            defaultColor: '#ffffff',
+                        }}
 
-            chartEvents = {chartEvents}
+                        chartEvents = {chartEvents}
 
-  mapsApiKey={REACT_APP_GOOGLE_MAP_API}
-  rootProps={{ 'data-testid': '1' }}
-/>
-    )
+                        mapsApiKey={REACT_APP_GOOGLE_MAP_API}
+                        rootProps={{ 'data-testid': '1' }}
+                    />
+                </div>
+
+                <div className='SidePanel'> 
+                    <h2>Headlines</h2>
+                    <h3>some shit</h3>
+                </div>
+
+            </div>
+        )
+    }
 }
-
-export default Geochart;
 
