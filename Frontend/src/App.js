@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Geochart from './components/Geochart';
-import SidePanel from './components/SidePanel';
 
 
 function App() {
@@ -20,7 +19,8 @@ function App() {
       
       
       <div className='SidePanel'> 
-        <SidePanel />
+          <h2>Headlines</h2>
+          <h3>some shit</h3>
       </div>
       <div className='lineV'></div>
     </div>

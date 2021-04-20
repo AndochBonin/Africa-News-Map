@@ -1,6 +1,5 @@
 import { Chart } from 'react-google-charts';
 import React from 'react';
-
 const { REACT_APP_GOOGLE_MAP_API } = process.env;
 
 const data = [
@@ -80,10 +79,6 @@ const chartEvents = [
 
 function Geochart() {
 
-    //getNews("Ghana");
-    
-    //weather.setCity("Algiers");
-    //weather.getTemperature(function(err, temp) { console.log(temp); } );
     return (
         <Chart
             width={'70vw'}
