@@ -10,8 +10,12 @@ app.listen(port, () => console.log(`My backend listening on port${port}`))
 
 app.get("/gnews", (req, res) => {
     const main = async () => {
-        const geo = await news.geo(req.query.region, {n : 5});
-        res.send(geo[0].title + " | " + geo[0].link);
+        let query = req.query.region;
+        const print = item => console.log(item.pubDate + ' | ' + item.title);
+        const geo = await news.geo(query, {n : 5});
+        //geo.forEach(print);
+        res.send(geo);
+        //res.send(query);
     };
     main();
 })

@@ -15,7 +15,6 @@
   text-align: left;
 }
 
-
 .SidePanel {
   background-color: #282c38;
   flex-direction: row;
@@ -63,5 +62,6 @@ h4 {
 h3 {
   text-align: left;
   margin-left: 30px;
-  margin-top: 50px;
+  margin-top: 80px;
+  color: darkgrey;
 }

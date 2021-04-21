@@ -1,5 +1,6 @@
 import { Chart } from 'react-google-charts';
 import React, { Component } from 'react';
+import axios from 'axios';
 const { REACT_APP_GOOGLE_MAP_API } = process.env;
 
 
@@ -66,24 +67,41 @@ const data = [
     ['Zimbabwe', -18]
 ];
 
-let chartEvents = [
-    {
-      eventName: "select",
-      callback({ chartWrapper }) {
-        const chart = chartWrapper.getChart();
-        const selection = chart.getSelection();
-        if (selection.length === 0) return;
-        const region = data[selection[0].row + 1][0];
-        console.log(region);
-      }
-    }
-];
 
 
 export default class Geochart extends Component {
+
+    constructor(){
+        super();
+        this.state = {
+            region: "Africa",
+            news: []
+        }
+    }
+
+    chartEvents = [
+        {
+          eventName: "select",
+          callback({ chartWrapper }) {
+            const chart = chartWrapper.getChart();
+            const selection = chart.getSelection();
+            if (selection.length === 0) return;
+            const country = data[selection[0].row + 1][0];
+            console.log(country);
+          }
+        }
+    ];
+
+    componentDidMount = () => {
+        axios.get(`/gnews?region=${this.state.region}`).then(response => {
+            this.setState({news: response});
+        })
+    };
+
     render() {
         return (
             <div>
+
                 <div className='chart'> 
                     <Chart
                         width={'70vw'}
@@ -99,7 +117,7 @@ export default class Geochart extends Component {
                             defaultColor: '#ffffff',
                         }}
 
-                        chartEvents = {chartEvents}
+                        chartEvents = {this.chartEvents}
 
                         mapsApiKey={REACT_APP_GOOGLE_MAP_API}
                         rootProps={{ 'data-testid': '1' }}
@@ -107,8 +125,12 @@ export default class Geochart extends Component {
                 </div>
 
                 <div className='SidePanel'> 
-                    <h2>Headlines</h2>
-                    <h3>some shit</h3>
+                    <h2>Headlines: {this.state.region}</h2>
+                    <h3>{this.state.region[0].title}</h3>
+                    <h3>Headline 2</h3>
+                    <h3>Headline 3</h3>
+                    <h3>Headline 4</h3>
+                    <h3>Headline 5</h3>
                 </div>
 
             </div>
