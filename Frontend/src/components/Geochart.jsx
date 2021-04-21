@@ -68,35 +68,42 @@ const data = [
 ];
 
 
-
 export default class Geochart extends Component {
-
     constructor(){
         super();
         this.state = {
             region: "Africa",
-            news: []
+            news: ["Headline 1", "Headline 2", "Headline 3", "Headline 4"]
         }
+        this.handleClick = this.handleClick.bind(this);
+        const superClass = this;
+        this.chartEvents = [
+            {
+              eventName: "select",
+              callback({ chartWrapper }) {
+                const chart = chartWrapper.getChart();
+                const selection = chart.getSelection();
+                if (selection.length === 0) return;
+                const country = data[selection[0].row + 1][0];
+                axios.get(`/gnews?region=${country}`).then(response => {
+                    superClass.setState({ news: response.data, region: country})
+                    console.log(superClass.state.news);
+                });
+                //console.log(superClass.state.news);
+                /*superClass.setState({
+                    region: country,
+                });*/
+              }
+            }
+        ];
     }
 
-    chartEvents = [
-        {
-          eventName: "select",
-          callback({ chartWrapper }) {
-            const chart = chartWrapper.getChart();
-            const selection = chart.getSelection();
-            if (selection.length === 0) return;
-            const country = data[selection[0].row + 1][0];
-            console.log(country);
-          }
-        }
-    ];
-
-    componentDidMount = () => {
-        axios.get(`/gnews?region=${this.state.region}`).then(response => {
-            this.setState({news: response});
+    handleClick(country) {
+        this.setState({
+            region: country
         })
-    };
+    }
+
 
     render() {
         return (
@@ -126,11 +133,10 @@ export default class Geochart extends Component {
 
                 <div className='SidePanel'> 
                     <h2>Headlines: {this.state.region}</h2>
-                    <h3>{this.state.region[0].title}</h3>
-                    <h3>Headline 2</h3>
-                    <h3>Headline 3</h3>
-                    <h3>Headline 4</h3>
-                    <h3>Headline 5</h3>
+                    <h3>{this.state.news[0]}</h3>
+                    <h3>{this.state.news[1]}</h3>
+                    <h3>{this.state.news[2]}</h3>
+                    <h3>{this.state.news[3]}</h3>
                 </div>
 
             </div>

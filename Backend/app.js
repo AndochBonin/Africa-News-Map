@@ -12,10 +12,11 @@ app.get("/gnews", (req, res) => {
     const main = async () => {
         let query = req.query.region;
         const print = item => console.log(item.pubDate + ' | ' + item.title);
-        const geo = await news.geo(query, {n : 5});
+        const geo = await news.geo(query, {n : 4});
         //geo.forEach(print);
-        res.send(geo);
-        //res.send(query);
+        console.log(geo[0].title);
+        //console.log(geo[2].title)
+        res.send([geo[0].title, geo[1].title, geo[2].title, geo[3].title]);
     };
     main();
 })
