@@ -12,8 +12,9 @@ app.get("/gnews", (req, res) => {
     const main = async () => {
         let query = req.query.region;
         const print = item => console.log(item.pubDate + ' | ' + item.title);
-        const geo = await news.geo(query, {n : 4});
+        let geo = await news.geo(query, {n : 4});
         //geo.forEach(print);
+        geo = geo[0].title == "This feed is not available." ? await news.search(query, {n : 4}) : geo;
         console.log(geo[0].title);
         //console.log(geo[2].title)
         res.send([geo[0].title, geo[1].title, geo[2].title, geo[3].title]);
