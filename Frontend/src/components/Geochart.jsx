@@ -9,7 +9,7 @@ const data = [
     ['Country', 'Color Index'],
 
     // African countries
-    ['Algeria', 30], 
+    ['Algeria', -12], 
     ['Angola', -8], 
     ['Benin', 6], 
     ['Botswana', -24],
@@ -34,15 +34,15 @@ const data = [
     ['Guinea', 10], 
     ['Guinea-Bissau', 12], 
     ['Kenya', -1], 
-    ['Lesotho', -29], 
+    ['Lesotho', -24], 
     ['Liberia', 6], 
-    ['Libya', 32], 
+    ['Libya', -21], 
     ['Madagascar', -12], 
     ['Malawi', -14], 
     ['Mali', 12], 
     ['Mauritania', 18], 
     ['Mauritius', -20],
-    ['Morocco', 32],
+    ['Morocco', -22],
     ['Mozambique', -25], 
     ['Namibia', -22], 
     ['Niger', 14], 
@@ -61,7 +61,7 @@ const data = [
     ['Swaziland', -26], 
     ['Tanzania', -6], 
     ['Togo', 6], 
-    ['Tunisia', 100], 
+    ['Tunisia', 20], 
     ['Uganda', 1], 
     ['Western Sahara', 25], 
     ['Zambia', -15], 
@@ -93,6 +93,7 @@ const data = [
     ['Dominican Republic', 35],
     ['El Salvador', 29],
     ['Grenada', 30],
+    ['Greenland', 30],
     ['Guatemala', 26],
     ['Haiti', 30],
     ['Honduras', 37],
@@ -209,6 +210,10 @@ const data = [
     ['Uzbekistan', -97],
     ['Vietnam', -96],
     ['Yemen', -84],
+
+    // Australia
+    ['Australia', -81],
+
 ];
 
 
@@ -216,8 +221,8 @@ export default class Geochart extends Component {
     constructor(){
         super();
         this.state = {
-            region: "Africa",
-            news: ["Headline 1", "Headline 2", "Headline 3", "Headline 4", "Headline 5"]
+            region: " ",
+            news: [" - Select a Country to See Recent News", " ", " ", " ",]
         }
         this.handleClick = this.handleClick.bind(this);
         const superClass = this;
@@ -228,7 +233,10 @@ export default class Geochart extends Component {
                 const chart = chartWrapper.getChart();
                 const selection = chart.getSelection();
                 if (selection.length === 0) return;
-                const country = data[selection[0].row + 1][0];
+                let country = data[selection[0].row + 1][0];
+                if (country === 'SS') country = 'South Sudan';
+                if (country === 'CD') country = 'Democratic Republic of Congo';
+                if (country === 'CG') country = 'Congo';
                 axios.get(`/gnews?region=${country}`).then(response => {
                     superClass.setState({ news: response.data, region: country})
                     console.log(superClass.state.news);
