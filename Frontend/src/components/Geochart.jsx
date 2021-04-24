@@ -222,7 +222,8 @@ export default class Geochart extends Component {
         super();
         this.state = {
             region: " ",
-            news: [" - Select a Country to See Recent News", " ", " ", " ",]
+            news: [" - Select a Country to See Recent News", " ", " ", " ",],
+            links: []
         }
         this.handleClick = this.handleClick.bind(this);
         const superClass = this;
@@ -238,7 +239,7 @@ export default class Geochart extends Component {
                 if (country === 'CD') country = 'Democratic Republic of Congo';
                 if (country === 'CG') country = 'Congo';
                 axios.get(`/gnews?region=${country}`).then(response => {
-                    superClass.setState({ news: response.data, region: country})
+                    superClass.setState({ news: response.data[0], links: response.data[1], region: country})
                     console.log(superClass.state.news);
                 });
                 //console.log(superClass.state.news);
@@ -285,10 +286,10 @@ export default class Geochart extends Component {
 
                 <div className='SidePanel'> 
                     <h2>Headlines: {this.state.region}</h2>
-                    <h3>{this.state.news[0]}</h3>
-                    <h3>{this.state.news[1]}</h3>
-                    <h3>{this.state.news[2]}</h3>
-                    <h3>{this.state.news[3]}</h3>
+                    <a href={this.state.links[0]} target="_blank" rel="noreferrer"><h3>{this.state.news[0]}</h3></a>
+                    <a href={this.state.links[1]} target="_blank" rel="noreferrer"><h3>{this.state.news[1]}</h3></a>
+                    <a href={this.state.links[2]} target="_blank" rel="noreferrer"><h3>{this.state.news[2]}</h3></a>
+                    <a href={this.state.links[3]} target="_blank" rel="noreferrer"><h3>{this.state.news[3]}</h3></a>
                 </div>
 
             </div>

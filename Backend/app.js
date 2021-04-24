@@ -17,7 +17,7 @@ app.get("/gnews", (req, res) => {
         geo = geo[0].title == "This feed is not available." ? await news.search(query, {n : 4}) : geo;
         console.log(geo[0].title);
         //console.log(geo[2].title)
-        res.send([geo[0].title, geo[1].title, geo[2].title, geo[3].title]);
+        res.send([[geo[0].title, geo[1].title, geo[2].title, geo[3].title], [geo[0].link, geo[1].link, geo[2].link, geo[3].link]]);
     };
     main();
 })
