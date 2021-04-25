@@ -238,7 +238,7 @@ export default class Geochart extends Component {
                 if (country === 'SS') country = 'South Sudan';
                 if (country === 'CD') country = 'Democratic Republic of Congo';
                 if (country === 'CG') country = 'Congo';
-                axios.get(`/gnews?region=${country}`).then(response => {
+                axios.get(`https://vast-hamlet-19182.herokuapp.com/gnews?region=${country}`).then(response => {
                     superClass.setState({ news: response.data[0], links: response.data[1], region: country})
                     console.log(superClass.state.news);
                 });
