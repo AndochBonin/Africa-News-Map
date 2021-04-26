@@ -1,6 +1,6 @@
 # News-Map
 
-Map of the world that displays headlines of a country that is selected.
+Map of the world that displays recent headlines of a country that is selected.
 
 
 # setup
