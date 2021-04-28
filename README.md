@@ -7,6 +7,7 @@ Map of the world that displays recent headlines of a country that is selected.
 
 -Either download the source code or clone the repository.
 -cd into the Frontend directory. (No work is needed on the Backend side as it is now fully hosted on heroku).
+-Run npm i to install dependencies.
 -Enter npm start and go to http://localhost:3000/.
 
 # usage
