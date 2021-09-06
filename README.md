@@ -23,5 +23,5 @@ Map of the world that displays recent headlines of a country that is selected.
 
 ![image](https://user-images.githubusercontent.com/66486863/132235510-a41c241c-9108-4517-843a-dc2c5721573e.png)
 
-![image](https://user-images.githubusercontent.com/66486863/132236277-78fc773d-a859-494e-a21a-927aead8a45b.png)
+![image](https://user-images.githubusercontent.com/66486863/132236629-8c412fe9-7075-401d-93ac-8ee29dd9ecdb.png)
 
