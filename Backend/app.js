@@ -7,6 +7,10 @@ const port = 5000;
 app.get("/", (req, res) => res.send("MY BACKEND"));
 app.listen(port, () => console.log(`My backend listening on port${port}`))
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
 
 app.get("/gnews", (req, res) => {
     const main = async () => {
@@ -21,5 +25,5 @@ app.get("/gnews", (req, res) => {
     };
     main();
 })
-
+// to start run node app.js
 //main();
